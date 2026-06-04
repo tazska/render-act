@@ -13,11 +13,11 @@ export class EstudianteService {
 
   async create(dto: CreateEstudianteDto): Promise<Estudiante> {
     const existe = await this.estudianteRepository.findOne({
-      where: { codigo: dto.codigo },
+      where: { cedula: dto.cedula },
     });
     if (existe) {
       throw new ConflictException(
-        `Ya existe un estudiante con el código "${dto.codigo}"`,
+        `Ya existe un estudiante con la cédula "${dto.cedula}"`,
       );
     }
     const estudiante = this.estudianteRepository.create(dto);

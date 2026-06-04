@@ -15,7 +15,7 @@ export class Estudiante {
   @Column({ length: 100 })
   apellido!: string;
 
-  @ApiProperty({ example: '2024001', description: 'Código del estudiante' })
+  @ApiProperty({ example: '12345678', description: 'Cédula del estudiante' })
   @Column({ length: 50, unique: true })
-  codigo!: string;
+  cedula!: string;
 }

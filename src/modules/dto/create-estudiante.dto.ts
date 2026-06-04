@@ -14,9 +14,9 @@ export class CreateEstudianteDto {
   @MaxLength(100, { message: 'El apellido no puede superar los 100 caracteres' })
   apellido!: string;
 
-  @ApiProperty({ example: '2024001', description: 'Código del estudiante', maxLength: 50 })
+  @ApiProperty({ example: '12345678', description: 'Cédula del estudiante', maxLength: 50 })
   @IsString()
-  @IsNotEmpty({ message: 'El código no puede estar vacío' })
-  @MaxLength(50, { message: 'El código no puede superar los 50 caracteres' })
-  codigo!: string;
+  @IsNotEmpty({ message: 'La cédula no puede estar vacía' })
+  @MaxLength(50, { message: 'La cédula no puede superar los 50 caracteres' })
+  cedula!: string;
 }
