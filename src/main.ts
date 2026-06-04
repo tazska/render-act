@@ -61,6 +61,9 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document, {
     swaggerOptions: { persistAuthorization: true },
   });
+  SwaggerModule.setup('/', app, document, {
+    swaggerOptions: { persistAuthorization: true },
+  });
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
@@ -68,6 +71,9 @@ async function bootstrap() {
   console.log(`\n🚀 StockMaster corriendo en: http://localhost:${port}/api/v1`);
   console.log(
     `📚 Swagger docs en:          http://localhost:${port}/api/docs\n`,
+  );
+  console.log(
+    `🔗 Swagger (root):          http://localhost:${port}/\n`,
   );
 }
 void bootstrap();
