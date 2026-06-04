@@ -30,7 +30,7 @@ import * as path from 'path';
           password: config.get<string>('DB_PASSWORD'),
           database: config.get<string>('DB_DATABASE'),
           entities: ['dist/**/*.entity.js'],
-          synchronize: config.get('NODE_ENV') !== 'production',
+          synchronize: config.get('NODE_ENV') !== 'production' || config.get('DB_SYNC') === 'true',
           logging: config.get('NODE_ENV') === 'production',
           ssl: ca
             ? {
