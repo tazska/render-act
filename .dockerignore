@@ -1,0 +1,8 @@
+node_modules
+dist
+frontend
+.git
+.gitignore
+*.md
+test
+.eslintcache

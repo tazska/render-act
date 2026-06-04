@@ -1,11 +1,9 @@
 services:
   - type: web
     name: stockmaster
-    env: node
+    env: docker
     region: ohio
     plan: free
-    buildCommand: npm install --include=dev && npm run build
-    startCommand: npm run start:prod
     healthCheckPath: /api/v1
     envVars:
       - key: NODE_ENV
