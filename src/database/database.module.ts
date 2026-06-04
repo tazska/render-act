@@ -12,6 +12,16 @@ import * as path from 'path';
       useFactory: (config: ConfigService) => {
         const dbCaCert = config.get<string>('DB_CA_CERT');
 
+        let ca: string | undefined;
+        if (dbCaCert) {
+          const certPath = path.resolve(__dirname, '../../', dbCaCert);
+          if (fs.existsSync(certPath)) {
+            ca = fs.readFileSync(certPath, 'utf-8');
+          } else {
+            ca = dbCaCert;
+          }
+        }
+
         return {
           type: 'mysql',
           host: config.get<string>('DB_HOST'),
@@ -22,9 +32,9 @@ import * as path from 'path';
           entities: ['dist/**/*.entity.js'],
           synchronize: config.get('NODE_ENV') !== 'production',
           logging: config.get('NODE_ENV') === 'production',
-          ssl: dbCaCert
+          ssl: ca
             ? {
-                ca: fs.readFileSync(path.resolve(__dirname, '../../', dbCaCert)),
+                ca,
               }
             : undefined,
         };
