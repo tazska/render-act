@@ -10,16 +10,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useWebSocketAdapter(new IoAdapter(app));
 
-  // ── CORS ──────────────────────────────────────────────────────
-  const corsOrigins = process.env.CORS_ORIGIN
-    ? process.env.CORS_ORIGIN.split(',').map((o) => o.trim())
-    : ['http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'];
-
-  app.enableCors({
-    origin: corsOrigins,
-    credentials: true,
-  });
-
   // ── Prefijo global de la API ──────────────────────────────────
   app.setGlobalPrefix('api/v1');
 

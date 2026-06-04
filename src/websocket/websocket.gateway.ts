@@ -15,12 +15,7 @@ import { ConnectedUsersStore } from './connected-users.store';
 import { Producto } from '../modules/entities/producto.entity';
 import { Movement } from '../modules/entities/movement.entity';
 
-@WebSocketGateway({
-  cors: {
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-    credentials: true,
-  },
-})
+@WebSocketGateway()
 @UseGuards(WsAuthGuard)
 @Injectable()
 export class WebsocketGateway
