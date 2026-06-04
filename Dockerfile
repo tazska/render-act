@@ -29,5 +29,6 @@ RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 COPY ca-cert.pem ./
+#1
 
 CMD ["node", "dist/main.js"]
