@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: stockmaster
+    name: render-act-leyder
     env: docker
     region: ohio
     plan: free
